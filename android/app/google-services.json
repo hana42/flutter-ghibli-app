@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "250963798278",
+    "project_id": "compass-ghibli-app",
+    "storage_bucket": "compass-ghibli-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:250963798278:android:7968b1322c91c008f91687",
+        "android_client_info": {
+          "package_name": "com.example.ghibli"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "250963798278-cvncsfu30h7n07ssh18ntoed9456vacl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAoXG1H_aNjL32TmOE-iby8TZ5OJtOU8yk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "250963798278-cvncsfu30h7n07ssh18ntoed9456vacl.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "250963798278-asm5urn944c761i7rqektdl17l2lggij.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.ghibli"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
