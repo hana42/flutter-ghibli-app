@@ -53,8 +53,8 @@ class _ProfilePageState extends State<ProfilePage>
       case 2:
         return Column(
           children: [
-            if (!user.emailVerified) const Text('Verify your email'),
             Text('Settings'),
+            if (!user.emailVerified) const Text('Verify your email'),
           ],
         );
     }
@@ -68,120 +68,124 @@ class _ProfilePageState extends State<ProfilePage>
         backgroundColor: Colors.transparent,
         elevation: 0,
       ),
-      body: Column(
+      body: ListView(
         children: [
-          Stack(
-            alignment: Alignment.center,
+          Column(
             children: [
-              SizedBox(
-                width: MediaQuery.of(context).size.width,
-                height: MediaQuery.of(context).size.height / 2.5,
-                child: Container(
-                  decoration: BoxDecoration(
-                      color: Colors.amber,
-                      image: DecorationImage(
-                          fit: BoxFit.cover,
-                          colorFilter: ColorFilter.mode(
-                            Colors.black.withOpacity(0.7),
-                            BlendMode.hardLight,
-                          ),
-                          image: AssetImage('assets/logo/header.jpg'))),
-                ),
-              ),
-              Column(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                crossAxisAlignment: CrossAxisAlignment.center,
+              Stack(
+                alignment: Alignment.center,
                 children: [
-                  Container(
-                    width: 122,
-                    height: 122,
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      border: Border.all(
-                        color: Colors.white,
-                        width: 2,
-                      ),
-                    ),
-                    child: GestureDetector(
-                      onTap: () {},
-                      child: UserAvatar(
-                        auth: _auth,
-                        placeholderColor: Colors.grey,
-                      ),
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width,
+                    height: MediaQuery.of(context).size.height / 2.5,
+                    child: Container(
+                      decoration: BoxDecoration(
+                          color: Colors.amber,
+                          image: DecorationImage(
+                              fit: BoxFit.cover,
+                              colorFilter: ColorFilter.mode(
+                                Colors.black.withOpacity(0.7),
+                                BlendMode.hardLight,
+                              ),
+                              image: AssetImage('assets/logo/header.jpg'))),
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.fromLTRB(80, 12, 40, 0),
-                    child: Align(
-                        alignment: Alignment.center,
-                        child: EditableUserDisplayName(auth: _auth)),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Container(
+                        width: 122,
+                        height: 122,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          border: Border.all(
+                            color: Colors.white,
+                            width: 2,
+                          ),
+                        ),
+                        child: GestureDetector(
+                          onTap: () {},
+                          child: UserAvatar(
+                            auth: _auth,
+                            placeholderColor: Colors.grey,
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(80, 12, 40, 0),
+                        child: Align(
+                            alignment: Alignment.center,
+                            child: EditableUserDisplayName(auth: _auth)),
+                      ),
+                    ],
                   ),
                 ],
               ),
-            ],
-          ),
-          SizedBox(
-            height: 300,
-            child: Column(
-              children: [
-                TabBar(
-                  indicatorColor: Colors.blueGrey,
-                  controller: _tabController,
-                  tabs: tabs.map((e) => Tab(text: e)).toList(),
+              SizedBox(
+                height: 300,
+                child: Column(
+                  children: [
+                    TabBar(
+                      indicatorColor: Colors.blueGrey,
+                      controller: _tabController,
+                      tabs: tabs.map((e) => Tab(text: e)).toList(),
+                    ),
+                    _tabsContent(),
+                  ],
                 ),
-                _tabsContent(),
-              ],
-            ),
-          ),
-          Column(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              TextButton.icon(
-                style: ButtonStyle(
-                  fixedSize: MaterialStateProperty.all<Size>(
-                    Size(MediaQuery.of(context).size.width / 1.3, 40),
-                  ),
-                  backgroundColor: MaterialStateProperty.all<Color>(
-                    Color.fromARGB(255, 24, 24, 24),
-                  ),
-                ),
-                icon: Icon(
-                  Icons.logout,
-                  color: Colors.white,
-                ),
-                label: Text(
-                  'Sign Out',
-                  style: TextStyle(color: Colors.white),
-                ),
-                onPressed: () async {
-                  await _auth.signOut().then((_) => Navigator.popUntil(
-                      context, (route) => route.isFirst));
-                },
               ),
-              TextButton.icon(
-                style: ButtonStyle(
-                  fixedSize: MaterialStateProperty.all<Size>(
-                    Size(MediaQuery.of(context).size.width / 1.3, 40),
-                  ),
-                  backgroundColor: MaterialStateProperty.all<Color>(
-                      Color.fromARGB(255, 24, 24, 24)),
-                ),
-                icon: Icon(
-                  Icons.delete,
-                  color: Colors.red,
-                ),
-                label: Text(
-                  'Delete Account',
-                  style: TextStyle(color: Colors.red),
-                ),
-                onPressed: () async {
-                  await _auth.currentUser!.delete().whenComplete(() =>
-                      Navigator.popUntil(
+              Column(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  TextButton.icon(
+                    style: ButtonStyle(
+                      fixedSize: MaterialStateProperty.all<Size>(
+                        Size(MediaQuery.of(context).size.width / 1.3, 40),
+                      ),
+                      backgroundColor: MaterialStateProperty.all<Color>(
+                        Color.fromARGB(255, 24, 24, 24),
+                      ),
+                    ),
+                    icon: Icon(
+                      Icons.logout,
+                      color: Colors.white,
+                    ),
+                    label: Text(
+                      'Sign Out',
+                      style: TextStyle(color: Colors.white),
+                    ),
+                    onPressed: () async {
+                      await _auth.signOut().then((_) => Navigator.popUntil(
                           context, (route) => route.isFirst));
-                },
-              ),
+                    },
+                  ),
+                  TextButton.icon(
+                    style: ButtonStyle(
+                      fixedSize: MaterialStateProperty.all<Size>(
+                        Size(MediaQuery.of(context).size.width / 1.3, 40),
+                      ),
+                      backgroundColor: MaterialStateProperty.all<Color>(
+                          Color.fromARGB(255, 24, 24, 24)),
+                    ),
+                    icon: Icon(
+                      Icons.delete,
+                      color: Colors.red,
+                    ),
+                    label: Text(
+                      'Delete Account',
+                      style: TextStyle(color: Colors.red),
+                    ),
+                    onPressed: () async {
+                      await _auth.currentUser!.delete().whenComplete(() =>
+                          Navigator.popUntil(
+                              context, (route) => route.isFirst));
+                    },
+                  ),
+                ],
+              )
             ],
-          )
+          ),
         ],
       ),
     );
