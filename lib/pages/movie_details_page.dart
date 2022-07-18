@@ -5,7 +5,7 @@ import 'package:ghibli/models/movie_model.dart';
 import 'package:ghibli/repositories/movies_remote_data_source.dart';
 import 'package:ghibli/repositories/movies_local_data_source.dart';
 import 'package:ghibli/repositories/movies_repository_impl.dart';
-import 'package:ghibli/controllers/get_movie_detail.dart';
+import 'package:ghibli/usecases/get_movie_detail.dart';
 import 'package:ghibli/services/hive_service_impl.dart';
 import 'package:ghibli/services/http_service_impl.dart';
 import 'package:ghibli/utils/urls.dart';

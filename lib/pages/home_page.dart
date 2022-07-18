@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ghibli/controllers/get_movies.dart';
+import 'package:ghibli/usecases/get_movies.dart';
 import 'package:ghibli/models/movie_model.dart';
 import 'package:ghibli/pages/movies_page.dart';
 import 'package:ghibli/pages/user_movie_list_page.dart';

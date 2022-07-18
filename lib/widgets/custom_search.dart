@@ -1,6 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:ghibli/controllers/get_movies.dart';
+import 'package:ghibli/usecases/get_movies.dart';
 import 'package:ghibli/models/movie_model.dart';
 import 'package:ghibli/repositories/movies_remote_data_source.dart';
 import 'package:ghibli/repositories/movies_local_data_source.dart';
